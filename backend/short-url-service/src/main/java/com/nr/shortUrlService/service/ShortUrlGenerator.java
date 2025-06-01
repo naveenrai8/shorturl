@@ -14,11 +14,11 @@ import java.security.SecureRandom;
 public class ShortUrlGenerator {
     private static final char[] ALPHANUMERIC_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
     private static final SecureRandom random = new SecureRandom();
-    @Value("${SHORT_URL_LENGTH:9}")
-    private static int SHORT_URL_LENGTH;
+    @Value("${app.shortUrlLength:10}")
+    private int shortUrlLength;
     private final UrlRepository urlRepository;
 
-    public static String generateRandomString(int length) {
+    public String generateRandomString(int length) {
         if (length < 1) {
             throw new IllegalArgumentException("Length must be at least 1.");
         }
@@ -32,10 +32,10 @@ public class ShortUrlGenerator {
     }
 
     public String generate(String url) {
-        var shortUrl = generateRandomString(SHORT_URL_LENGTH);
+        var shortUrl = generateRandomString(shortUrlLength);
         while (urlRepository.existsById(shortUrl)) {
             log.info("Short url {} already exists. Generating new one.", shortUrl);
-            shortUrl = generateRandomString(SHORT_URL_LENGTH);
+            shortUrl = generateRandomString(shortUrlLength);
         }
         return shortUrl;
     }
