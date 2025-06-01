@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: short-url-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/shorturldb
+    username: root
+    password: naveen
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    jdbc:
+      dialect: mysql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  sql:
+    init:
+      mode: always
