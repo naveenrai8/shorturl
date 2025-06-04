@@ -26,6 +26,11 @@ public class UrlService {
     }
 
     public String getShortUrl(@Valid UrlDto urlDto) {
+        var optionalUrlMapping = this.urlRepository.findByLongUrl(urlDto.url());
+        if (optionalUrlMapping.isPresent()) {
+            return optionalUrlMapping.get().getShortUrl();
+        }
+
         var shortUrl = this.shortUrlGenerator.generate(urlDto.url());
         var urlMapping = UrlMapping.builder()
                 .shortUrl(shortUrl)
