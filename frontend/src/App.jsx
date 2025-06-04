@@ -1,24 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import ShortUrl from "./components/ShortUrl.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Get Short Url from Long Url</h1>
-    </>
-  )
+    return (
+        <>
+            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">Short Url from Long Url</h1>
+                <ShortUrl></ShortUrl>
+            </div>
+        </>
+    )
 }
 
 export default App
