@@ -1,8 +1,8 @@
 spring:
   application:
-    name: short-url-service
+    name: auth-service
   datasource:
-    url: jdbc:mysql://localhost:3306/shorturldb
+    url: jdbc:mysql://localhost:3306/authdb
     username: root
     password: naveen
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -19,6 +19,8 @@ spring:
 
 app:
   shortUrlLength: 9
-
 server:
-  port: 8002
+  port: 8001
+# This value must come from environment variable
+#jwt:
+#  secret:
